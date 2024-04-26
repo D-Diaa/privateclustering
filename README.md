@@ -17,9 +17,9 @@ python plots/ablation_plots.py centroid ablation
 ````
 To run accuracy experiments, use the following commands:
 ```bash
-  for dp_release in "centroid" "sumcount"; do
+for dp_release in "centroid" "sumcount"; do
     python experiments.py --exp_type accuracy --dp_release $dp_release --results_folder utility
-  done
+done
 ```
 For (optional) max_dist constraint, enable the `--max_dist_mode hard` flag.
 Note: this is only tested on 2D datasets.
