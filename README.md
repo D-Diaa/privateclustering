@@ -1,6 +1,13 @@
 # Differentially Private Federated $k$-means Clustering
 
 To reproduce the experiments in the paper, follow the instructions below.
+
+Datasets are available in `data` folder. Synthetic datasets are generated from `utils/synth.Rmd`
+
+Code compatible with any dataset with space-separated values in a text file, as long as the number of
+clusters is supplied in `configs/defaults.py`
+
+Create and activate conda environment from supplied `env.yml` file
 ```bash
 conda env create -f env.yml
 conda activate privatekm
