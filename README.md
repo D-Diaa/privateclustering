@@ -2,7 +2,7 @@
 
 To reproduce the experiments in the paper, follow the instructions below.
 ```bash
-conda create -f env.yml
+conda env create -f env.yml
 conda activate privatekm
 ```
 To run ablation experiments, use the following commands:
