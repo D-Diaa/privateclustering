@@ -1,0 +1,77 @@
+---
+title: "ClusterDatasets"
+output: html_document
+date: "2024-02-26"
+---
+
+
+```{r}
+n = 10000
+numClust_ls <- c(2,4,6,8,10,12,14,16,18,20)
+numNonNoisy_ls <- c(2,4,6,8,10,12,14,16,18,20)
+sepVal_ls <- c(0.21, 0.70)
+for (numClust in numClust_ls){
+  clustSizeEq = n/numClust
+  for (numNonNoisy in numNonNoisy_ls){
+    for (sepVal in sepVal_ls){
+      clusterGeneration::genRandomClust(numClust=numClust, 
+                                        sepVal=sepVal, 
+                                        numNonNoisy=numNonNoisy,
+                                        numReplicate=1, 
+                                        fileName=paste0("Synth", sepVal, "_", numClust, "_", numNonNoisy), 
+                                        clustszind=2, 
+                                        rangeN=c(0.75*clustSizeEq, 1.25*clustSizeEq), 
+                                        outputLogFlag = FALSE, 
+                                        outputEmpirical = FALSE, 
+                                        outputInfo = FALSE)
+    }
+  }
+}
+```
+
+```{r}
+n = 2048
+numClust_ls <- c(2, 4, 8, 16)
+numNonNoisy_ls <- c(2, 4, 8, 16)
+sepVal_ls <- c(0.25, 0.5, 0.75)
+for (numClust in numClust_ls){
+  clustSizeEq = n/numClust
+  for (numNonNoisy in numNonNoisy_ls){
+    for (sepVal in sepVal_ls){
+      clusterGeneration::genRandomClust(numClust=numClust, 
+                                        sepVal=sepVal, 
+                                        numNonNoisy=numNonNoisy,
+                                        numReplicate=1, 
+                                        fileName=paste0("AblateSynth_", numClust, "_", numNonNoisy, "_", sepVal), 
+                                        clustszind=2, 
+                                        rangeN=c(0.7*clustSizeEq, 1.3*clustSizeEq), 
+                                        outputLogFlag = FALSE, 
+                                        outputEmpirical = FALSE, 
+                                        outputInfo = FALSE)
+    }
+  }
+}
+```
+
+```{r}
+n_ls=c(10000, 100000)
+numClust_ls <- c(2, 5)
+numNonNoisy_ls <- c(2, 5)
+for (n in n_ls){
+  for (numClust in numClust_ls){
+    clustSizeEq = n/numClust
+    for (numNonNoisy in numNonNoisy_ls){
+        clusterGeneration::genRandomClust(numClust=numClust, 
+                                          sepVal=0.70, 
+                                          numNonNoisy=numNonNoisy,
+                                          numReplicate=1, 
+                                          fileName=paste0("timesynth_", numClust, "_", numNonNoisy, "_", n), 
+                                          clustszind=1, 
+                                          clustSizeEq=clustSizeEq, 
+                                          outputLogFlag = FALSE, 
+                                          outputEmpirical = FALSE, 
+                                          outputInfo = FALSE)
+    }
+  }
+}
+```
